@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default function SchemeFilm({ id, name, duration, position, time }) {
-  const posEnd = duration -15;
-  const horth = Math.round(duration/60);
+  const posEnd = duration - 29; // 29 - длина в px записи времени
+  const hour = Math.round(duration/60);
   const minut = duration % 60;
-  const timeEnd = `${10 + horth}:${minut}`;
-  console.log(posEnd);
+  const timeEnd = `${10 + hour}:${minut}`;
+  //console.log(posEnd);
   return (
     <div className='conf-step__seances-movie' id={id} 
       style={{
@@ -20,6 +20,7 @@ export default function SchemeFilm({ id, name, duration, position, time }) {
       <p className='conf-step__seances-movie-start'
         style={{'left': `${posEnd}px`}}>{timeEnd}
       </p>
+      <div className='cleaner-time' style={{'left': duration}}></div>
     </div>
   )
 }
