@@ -80,8 +80,8 @@ body {margin: 0; padding: 0;}
 
     .conf-step__seances {padding-bottom: 2vh;}
     .conf-step__seances-hall {
-      margin: 25px 35px;
-      
+      width: 780px;
+      margin: 25px auto;
     }
 
       .conf-step__seances-title {
@@ -121,16 +121,13 @@ body {margin: 0; padding: 0;}
           width: 1px;
           height: 5px;
           bottom: -17px;
-          left: -2px;
           background-color: #848484; }
-          .conf-step__seances-movie::after {
-            content: '';
+          .conf-step__seances-movie-after {
             position: absolute;
             display: block;
             width: 1px;
             height: 5px;
             bottom: -17px;
-            left: 127px;
             background-color: #848484; }
         .cleaner-time {
           position: absolute;

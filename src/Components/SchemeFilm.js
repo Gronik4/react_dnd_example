@@ -1,26 +1,26 @@
 import React from 'react'
 
-export default function SchemeFilm({ id, name, duration, position, time }) {
-  const posEnd = duration - 29; // 29 - длина в px записи времени
-  const hour = Math.round(duration/60);
-  const minut = duration % 60;
-  const timeEnd = `${10 + hour}:${minut}`;
-  //console.log(posEnd);
+export default function SchemeFilm({props}) {
+  const { id, name, dur, posStart, timeStart, timeEnd } = props;
+  const wt = 29; // Ширина записи времени чч:мм
+  //const movies = document.querySelector('.conf-step__seances-movie');
+  //const select = movies.find(el=> el.id === id);
+  /*const a = window.getComputedStyle(move,':after').content;*/
+
   return (
     <div className='conf-step__seances-movie' id={id} 
       style={{
-        'width': duration,
+        'width': dur,
         'backgroundColor': 'rgb(133, 255, 137)',
-        'left':0,
+        'left': posStart,
         'padding': 0,
         'fontSize': '0.7rem'
         }}>
       <p className='conf-step__seances-movie-title'>{name}</p>
-      <p className='conf-step__seances-movie-start'>10:00</p>
-      <p className='conf-step__seances-movie-start'
-        style={{'left': `${posEnd}px`}}>{timeEnd}
-      </p>
-      <div className='cleaner-time' style={{'left': duration}}></div>
+      <p className='conf-step__seances-movie-start'>{timeStart}</p>
+      <p className='conf-step__seances-movie-start' style={{'left': `${dur-wt}px`}}>{timeEnd}</p>
+      <div className='conf-step__seances-movie-after' style={{'left': `${dur-1}px`}}></div>
+      <div className='cleaner-time' style={{'left': `${dur}px`}}></div>
     </div>
   )
 }

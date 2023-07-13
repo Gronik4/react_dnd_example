@@ -13,3 +13,4 @@ console.log(scheduleHalls);
     timeStart - время начала сеанса в формате чч:мм,
     timeEnd - время окончания сеанса в формате чч:мм,
 
+{datasFilms.map((el)=> {return <SchemeFilm props={el}/>})}
