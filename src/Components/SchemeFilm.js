@@ -3,9 +3,6 @@ import React from 'react'
 export default function SchemeFilm({props}) {
   const { id, name, dur, posStart, timeStart, timeEnd } = props;
   const wt = 29; // Ширина записи времени чч:мм
-  //const movies = document.querySelector('.conf-step__seances-movie');
-  //const select = movies.find(el=> el.id === id);
-  /*const a = window.getComputedStyle(move,':after').content;*/
 
   return (
     <div className='conf-step__seances-movie' id={id} 
@@ -20,7 +17,7 @@ export default function SchemeFilm({props}) {
       <p className='conf-step__seances-movie-start'>{timeStart}</p>
       <p className='conf-step__seances-movie-start' style={{'left': `${dur-wt}px`}}>{timeEnd}</p>
       <div className='conf-step__seances-movie-after' style={{'left': `${dur-1}px`}}></div>
-      <div className='cleaner-time' style={{'left': `${dur}px`}}></div>
+      <div className='cleaner-time' style={{'left': `${dur-1}px`}}></div>
     </div>
   )
 }
