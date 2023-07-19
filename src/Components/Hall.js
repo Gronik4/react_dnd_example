@@ -3,12 +3,12 @@ import schemeFilmService from './sevices/schemeFilmService';
 import SchemeFilm from './SchemeFilm';
 
 export default function Hall({ name, id, schedule, datas }) {
-  //console.log(schedule[id-1][id]);
+  //console.log(schedule);
   //console.log(`id= ${id-1}`);
-  const tension = schedule[id];
+  const tension = 0/*schedule[id];*/
   
-  console.log(tension);
-  const datasFilms = schemeFilmService(tension, datas);
+  //console.log(tension);
+  const datasFilms = [];/*schemeFilmService(tension, datas);*/
   //console.log(datasFilms);
   //console.log(`numHall = ${id}, tension= ${tension}`);
   //console.log(tension);
