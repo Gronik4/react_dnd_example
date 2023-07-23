@@ -36,7 +36,7 @@ body {margin: 0; padding: 0;}
     background: #FFEB85;
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
-    cursor: pointer; }
+    cursor: grab; }
     .conf-step__movies .conf-step__movie:nth-of-type(3n + 2) {
       margin: 0 15px; }
     .conf-step__movies .conf-step__movie:nth-of-type(n + 4) {

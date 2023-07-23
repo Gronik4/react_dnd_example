@@ -11,6 +11,7 @@ function App() {
   const halls = hallsData;
   const films = filmsData;
   const filmJson = JSON.stringify(films);
+
   function setTensionStart() {
     const arrHalls = {};
     halls.forEach((el)=> {
@@ -21,25 +22,22 @@ function App() {
   
   const [tension, setTension] = useState(setTensionStart);
   
-  function addFilm(num) {
-    console.log();
-    const numH = Math.floor(Math.random()*3)+1;
-    const arr = [...tension[numH], Number(num)];
-    console.log(arr);
-    setTension({...tension, [numH]: arr});
+  function hendlerDragLeave(e) {
+    console.log('Вышли из - ' + e.target.className);
   }
-  
-  //renderTension = ;
-  //  
-  //arrHalls[2].push(3, 1);
-  //console.log(tension);
-  console.log(tension);
 
+  function addFilm(num) {
+    const numH = Math.floor(Math.random()*3)+1;
+    const arr1 = tension[numH].slice();
+    arr1.push(Number(num));
+    setTension({...tension, [numH]: arr1});
+  }
+//console.log(tension);
   return (
     <div className="App">
       <section className='conf-step'>
         <div className='conf-step__wrapper'>
-          <div className='conf-step__movies'>
+          <div className='conf-step__movies' onDragLeave={hendlerDragLeave}>
             {films.map((el)=> {
               return <Film
                 key={el.id}
