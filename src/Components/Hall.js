@@ -8,7 +8,8 @@ export default function Hall({ name, id, schedule, datas }) {
   const datasFilms = schemeFilmService(tension, datas);
   const workingHours = datasFilms.reduce((summ, next)=> summ + next.dur + 10, 0);
   if(workingHours > 779) {
-    alert(`Время демонстрации фильмов превышает продолжительность работы зала ${name}.`);
+    alert(`Нельзя добавить этот фильм в сетку этого зала!\n
+          Так как время демонстрации фильмов превысит продолжительность работы зала ${name}.`);
     tension.splice(-1, 1);
   }
   
@@ -18,15 +19,35 @@ export default function Hall({ name, id, schedule, datas }) {
     }):
     <p>В зале сансов пока не запланировано</p>;
 
-   function hendlerDrop(e) {
+  function hendlerDragOver(e) {
     e.preventDefault();
-    console.log(e.target.id);
-   }
+    e.target.style = 'background: #9adeed';
+    //console.log('Летим над элементом с id= '+id);
+console.log('Летим над элементом = '+e.target.innerHTML);
+  }
+
+  function hendlerDrop(e, id) {
+    e.target.style = 'background: ';
+   // console.log('бросили над элементом с классом= '+e.target.className);
+    console.log('бросили над элементом с id= '+id);
+  }
+
+  function hendlerDragLeave(e) {
+    e.preventDefault();
+    e.target.style = 'background: ';
+    console.log('Вылетели из элемента с id= '+id);
+  }
 
   return (
     <div className='conf-step__seances-hall' key={id} id={id}>
       <h3 className='conf-step__seances-title'>{name}</h3>
-      <div className='conf-step__seances-timeline' id={id} onDragOver={(e)=> hendlerDrop(e)}>
+      <div
+        className='conf-step__seances-timeline'
+        id={id}
+        onDragOver={(e)=> hendlerDragOver(e)}
+        onDrop={(e)=> hendlerDrop(e, id)}
+        onDragLeave={(e)=> hendlerDragLeave(e)}
+      >
         {renderFilm}
       </div>
     </div>

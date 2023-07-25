@@ -13,4 +13,13 @@ console.log(scheduleHalls);
     timeStart - время начала сеанса в формате чч:мм,
     timeEnd - время окончания сеанса в формате чч:мм,
 
-{datasFilms.map((el)=> {return <SchemeFilm props={el}/>})}
+Для работы DnD без загрузки npm install react-dnd и npm install react-dnd-html-backend
+В компонент предполагаемый для переноса пишем: draggable={true};
+Некоторые наблюдатели:
+  onDragStart - Срабатывает в момент взятия карточку.
+  onDragLeave - Срабатывает если вышли за пределы карточки.
+  onDragEnd - Срабатывает если отпустили карточку.
+  onDragOver -  находимся над каким-то объектом.
+  onDrop - Срабатывает когда отпустили карточку и что-то там нужно сделать.
+Для каждого наблюдателя нужно создать функцию и одним из переметров передать event.
+В функции наблюдателей onDrop и onDragOver необходимо сделать event.preventDefault();

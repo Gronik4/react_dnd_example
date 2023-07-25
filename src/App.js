@@ -15,7 +15,7 @@ function App() {
   function setTensionStart() {
     const arrHalls = {};
     halls.forEach((el)=> {
-      arrHalls[el.id] = [];
+      arrHalls[el.id] = [1, 2];
     });
     return arrHalls;
   }
@@ -23,7 +23,7 @@ function App() {
   const [tension, setTension] = useState(setTensionStart);
   
   function hendlerDragLeave(e) {
-    console.log('Вышли из - ' + e.target.className);
+    //console.log('Вышли из - ' + e.target.className);
   }
 
   function addFilm(num) {
@@ -32,6 +32,7 @@ function App() {
     arr1.push(Number(num));
     setTension({...tension, [numH]: arr1});
   }
+  
 //console.log(tension);
   return (
     <div className="App">
@@ -52,6 +53,7 @@ function App() {
         </div>
         <div className='conf-step__legend'>
           <span className='clearing-time__span'></span> - Время уборки и проветривания зала 10 минут
+          <p className="conf-step__paragraph">Для составления сетки зала, перетащите нужный фильм в нужный зал.</p>
         </div>
         <div className='conf-step__seances'>
           {halls.map((el)=> {

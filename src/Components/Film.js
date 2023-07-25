@@ -1,23 +1,26 @@
 import React from 'react';
 import image from '../img/poster.png'
+import SchemeFilm from './SchemeFilm';
 
 export default function Film({img, name, duration, id, onSelectFilm}) {
   function hendler(e) {
     onSelectFilm(e.target.closest('.conf-step__movie').id);
   }
   function hendlerDragStart(e, id) {
-    console.log('Взяли фильм с id= ' + id);
+    e.target.style = `width: ${duration}px`;
+    console.log('Взяли фильм с id= ' + e.target.id);
+    //console.log('Взяли фильм= ' + e.target.innerHTML);
   }
   
   function hendlerDragOver(e) {
     e.preventDefault();
-    console.log(e.target.className);
+    //console.log('Летим над элементом = '+e.target.className);
   }
 
   return (
     <div
       className='conf-step__movie'
-      id={id}
+      id={id+'f'}
       draggable={true}
       onDragStart={(e)=> hendlerDragStart(e, id)}
       onDragOver={hendlerDragOver}
