@@ -1,6 +1,5 @@
 export default function schemeFilmService(tension, datas) {
   const renderDate = [];
-  const filmData = {};
   let totalTime = 10 * 60; // Время начала работы зала 10:00 в минутах.  
   let totalWidth = 0;
 

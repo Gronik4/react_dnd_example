@@ -7,7 +7,7 @@ export default function Film({img, name, duration, id, onSelectFilm}) {
     onSelectFilm(e.target.closest('.conf-step__movie').id);
   }
   function hendlerDragStart(e, id) {
-    e.target.style = `width: ${duration}px`;
+    
     console.log('Взяли фильм с id= ' + e.target.id);
     //console.log('Взяли фильм= ' + e.target.innerHTML);
   }

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import schemeFilmService from './sevices/schemeFilmService';
 import SchemeFilm from './SchemeFilm';
 
 export default function Hall({ name, id, schedule, datas }) {
-  const tension = schedule[id];
+  const tension = schedule[id+'hg'];
  
   const datasFilms = schemeFilmService(tension, datas);
   const workingHours = datasFilms.reduce((summ, next)=> summ + next.dur + 10, 0);
@@ -20,10 +20,23 @@ export default function Hall({ name, id, schedule, datas }) {
     <p>В зале сансов пока не запланировано</p>;
 
   function hendlerDragOver(e) {
-    e.preventDefault();
-    e.target.style = 'background: #9adeed';
-    //console.log('Летим над элементом с id= '+id);
-console.log('Летим над элементом = '+e.target.innerHTML);
+    e.preventDefault(); console.log(e.target.className);
+    const idTaken = document.querySelector('.taken').id;
+    let idH = '';
+    if(e.target.className === 'conf-step__seances-timeline') {
+      e.target.style = 'background: #9adeed';
+      idH = e.target.id;
+      schedule[idH].push(Number(idTaken[0]));
+      //console.log('Летим над элементом = '+idH + ' несем фильм с id= '+idTaken);
+      //console.log(tension);
+    }
+    if(e.target.className === 'conf-step__seances-movie') {
+      schedule[idH].splice(-1, 1);
+      const idLowerF = e.target.id;
+      const index = schedule[idH].indexOf(idLowerF);
+      schedule[idH].splice(index, 0, Number(idTaken[0]));
+      console.log('Летим над элементом = '+idH + ' несем фильм с id= '+idTaken);
+    }
   }
 
   function hendlerDrop(e, id) {
@@ -34,17 +47,17 @@ console.log('Летим над элементом = '+e.target.innerHTML);
 
   function hendlerDragLeave(e) {
     e.preventDefault();
-    e.target.style = 'background: ';
-    console.log('Вылетели из элемента с id= '+id);
+    //e.target.style = 'background: ';
+    console.log('Вылетели из элемента с id= '+e.target.id);
   }
 
   return (
-    <div className='conf-step__seances-hall' key={id} id={id}>
+    <div className='conf-step__seances-hall' key={id} id={id+'h'}>
       <h3 className='conf-step__seances-title'>{name}</h3>
       <div
         className='conf-step__seances-timeline'
-        id={id}
-        onDragOver={(e)=> hendlerDragOver(e)}
+        id={id+'hg'}
+        onDragOver={(e, id)=> hendlerDragOver(e, id)}
         onDrop={(e)=> hendlerDrop(e, id)}
         onDragLeave={(e)=> hendlerDragLeave(e)}
       >

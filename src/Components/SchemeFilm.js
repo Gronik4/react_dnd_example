@@ -5,17 +5,20 @@ export default function SchemeFilm({props}) {
   const wt = 29; // Ширина записи времени чч:мм
 
   function hendlerStartSF(e) {
-    console.log(`Взяли схему фильма с id= `+e.target.id);
+    e.target.classList.add('taken');
+    //console.log(`Взяли схему фильма с id= `+e.target.className);
+    
   }
-  function hendlerDragOver(e) {
-    //console.log('Летим над элементом = '+e.target.id);
+  function hendlerDragEnd(e) {
+    e.target.classList.remove('taken')
+    //console.log('Отпустили элемент = '+e.target.className);
   }
 
   return (
     <div
       draggable={true}
       onDragStart={(e)=> hendlerStartSF(e)}
-      onDragOver={(e)=> hendlerDragOver(e)}
+      onDragEnd={(e)=> hendlerDragEnd(e)}
       className='conf-step__seances-movie'
       id={id+'fs'} 
       style={{
@@ -24,7 +27,7 @@ export default function SchemeFilm({props}) {
         'left': posStart,
         'padding': 0,
         'fontSize': '0.7rem',
-        'cursor': 'grab'
+        'cursor': 'move'
         }}
       >
       <p className='conf-step__seances-movie-title'>{name}</p>

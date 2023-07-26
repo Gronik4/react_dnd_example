@@ -4,7 +4,6 @@ import { hallsData } from './datas/halls';
 import { filmsData } from './datas/filmsData';
 import Film from './Components/Film';
 import Hall from './Components/Hall';
-import observe from './Components/DraggingState';
 import { useState } from 'react';
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
   function setTensionStart() {
     const arrHalls = {};
     halls.forEach((el)=> {
-      arrHalls[el.id] = [1, 2];
+      arrHalls[el.id+'hg'] = [1, 2];
     });
     return arrHalls;
   }
