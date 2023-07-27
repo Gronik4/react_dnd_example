@@ -1,6 +1,13 @@
 export default function schemeFilmService(tension, datas) {
-  const renderDate = [];
-  let totalTime = 10 * 60; // Время начала работы зала 10:00 в минутах.  
+  let renderDate;
+  if(tension.length === 0) {
+    renderDate = <p>В зале сансов пока не запланировано</p>;
+    return renderDate;
+  } else {
+    renderDate = [];
+  }
+  console.log(renderDate);
+  let totalTime = 10 * 60; // Время начала работы зала 10:00, с начала суток, в минутах.  
   let totalWidth = 0;
 
   tension.forEach((el )=> {
@@ -11,7 +18,7 @@ export default function schemeFilmService(tension, datas) {
     const minutesEnd = (totalTime + film.duration) % 60>9? (totalTime + film.duration) % 60: `0${(totalTime + film.duration) % 60}`;
     renderDate.push(
       {
-        id: film.id,
+        id: film.id+'fs',
         name: film.name,
         dur: film.duration,
         posStart: totalWidth,

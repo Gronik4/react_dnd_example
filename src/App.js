@@ -20,10 +20,6 @@ function App() {
   }
   
   const [tension, setTension] = useState(setTensionStart);
-  
-  function hendlerDragLeave(e) {
-    //console.log('Вышли из - ' + e.target.className);
-  }
 
   function addFilm(num) {
     const numH = Math.floor(Math.random()*3)+1;
@@ -37,7 +33,7 @@ function App() {
     <div className="App">
       <section className='conf-step'>
         <div className='conf-step__wrapper'>
-          <div className='conf-step__movies' onDragLeave={hendlerDragLeave}>
+          <div className='conf-step__movies'>
             {films.map((el)=> {
               return <Film
                 key={el.id}

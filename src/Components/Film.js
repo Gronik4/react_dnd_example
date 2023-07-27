@@ -3,27 +3,23 @@ import image from '../img/poster.png'
 import SchemeFilm from './SchemeFilm';
 
 export default function Film({img, name, duration, id, onSelectFilm}) {
-  function hendler(e) {
-    onSelectFilm(e.target.closest('.conf-step__movie').id);
-  }
-  function hendlerDragStart(e, id) {
-    
+  
+  function hendlerStart(e) {
+    e.target.classList.add('taken');
     console.log('Взяли фильм с id= ' + e.target.id);
     //console.log('Взяли фильм= ' + e.target.innerHTML);
   }
-  
-  function hendlerDragOver(e) {
-    e.preventDefault();
-    //console.log('Летим над элементом = '+e.target.className);
+  function hendlerEnd(e) {
+    e.target.classList.remove('taken');
   }
-
+  
   return (
     <div
       className='conf-step__movie'
       id={id+'f'}
       draggable={true}
-      onDragStart={(e)=> hendlerDragStart(e, id)}
-      onDragOver={hendlerDragOver}
+      onDragStart={(e)=> hendlerStart(e)}
+      onDragEnd={(e)=> hendlerEnd(e)}
       >
       {img? <img className='conf-step__movie-poster' alt='poster' src={image}/>: null}
       <h3 className='conf-step__movie-title'>{name}</h3>
