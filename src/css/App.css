@@ -147,3 +147,4 @@ body {margin: 0; padding: 0;}
         box-sizing: border-box;
         background-color: blueviolet;
       }
+.taken {border: 3px rgb(18, 18, 209) dashed;}

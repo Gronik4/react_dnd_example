@@ -6,7 +6,7 @@ export default function schemeFilmService(tension, datas) {
   } else {
     renderDate = [];
   }
-  console.log(renderDate);
+  //console.log(renderDate);
   let totalTime = 10 * 60; // Время начала работы зала 10:00, с начала суток, в минутах.  
   let totalWidth = 0;
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import image from '../img/poster.png'
-import SchemeFilm from './SchemeFilm';
 
 export default function Film({img, name, duration, id, onSelectFilm}) {
   
