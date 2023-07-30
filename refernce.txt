@@ -23,3 +23,6 @@ console.log(scheduleHalls);
   onDrop - Срабатывает когда отпустили карточку и что-то там нужно сделать.
 Для каждого наблюдателя нужно создать функцию и одним из переметров передать event.
 В функции наблюдателей onDrop и onDragOver необходимо сделать event.preventDefault();
+
+https://developer.mozilla.org/docs/Web/API/DataTransfer/setDragImage
+https://developer.mozilla.org/docs/Web/API/DataTransfer/setDragImage

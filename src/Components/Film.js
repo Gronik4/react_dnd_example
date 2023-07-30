@@ -1,12 +1,16 @@
 import React from 'react';
 import image from '../img/poster.png'
+import filmScheme from './sevices/filmScheme';
 
 export default function Film({img, name, duration, id, onSelectFilm}) {
   
   function hendlerStart(e) {
     e.target.classList.add('taken');
     console.log('Взяли фильм с id= ' + e.target.id);
-    //console.log('Взяли фильм= ' + e.target.innerHTML);
+    const fantom = filmScheme(name, duration, id);
+    document.querySelector('.conf-step__movies').append(fantom);
+    e.dataTransfer.setDragImage(document.getElementById(`${e.target.id}ff`), 10,10);
+    setTimeout(()=> fantom.remove(), 0);
   }
   function hendlerEnd(e) {
     e.target.classList.remove('taken');
@@ -15,7 +19,7 @@ export default function Film({img, name, duration, id, onSelectFilm}) {
   return (
     <div
       className='conf-step__movie'
-      id={id+'f'}
+      id={id}
       draggable={true}
       onDragStart={(e)=> hendlerStart(e)}
       onDragEnd={(e)=> hendlerEnd(e)}

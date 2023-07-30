@@ -14,7 +14,7 @@ function App() {
   function setTensionStart() {
     const arrHalls = {};
     halls.forEach((el)=> {
-      arrHalls[el.id+'hg'] = [el.id, el.id+1];
+      arrHalls[el.id+'hg'] = [el.id, el.id+1, el.id+2];
     });
     return arrHalls;
   }

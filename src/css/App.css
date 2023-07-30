@@ -147,4 +147,16 @@ body {margin: 0; padding: 0;}
         box-sizing: border-box;
         background-color: blueviolet;
       }
-.taken {border: 3px rgb(18, 18, 209) dashed;}
+.taken {
+  border: 3px rgb(3, 58, 37) dashed;
+  border-radius: 8px;
+  opacity: 0.4;}
+.fantom {
+  box-sizing: border-box;
+  height: 40px;
+  background: rgb(133, 255, 137);
+  border: rgb(3, 58, 37) dashed 3px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  cursor: grab;
+}

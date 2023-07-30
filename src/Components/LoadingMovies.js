@@ -18,12 +18,14 @@ export default function LoadingMovies({tension, datas, onDelFilm}) {
   
   function hendlerStartSF(e) {
     console.log('Взяли фильм= '+e.target.id);
+    e.target.style.opacity = '0.4';
     e.target.classList.add('taken');
     
   }
 
   function hendlerEndSF(e) {
-    onDelFilm(e);
+    e.target.style.opacity = '1';
+    onDelFilm();
     e.target.classList.remove('taken');
     
   }
@@ -39,6 +41,7 @@ export default function LoadingMovies({tension, datas, onDelFilm}) {
             onDragStart={(e)=> hendlerStartSF(e)}
             onDragEnd={(e)=> hendlerEndSF(e)}
             className='conf-step__seances-movie'
+            data-tag='film'
             id={id} 
             style={{
               'width': dur,
@@ -49,11 +52,11 @@ export default function LoadingMovies({tension, datas, onDelFilm}) {
               'cursor': 'move'
               }}
             >
-            <p className='conf-step__seances-movie-title'>{name}</p>
-            <p className='conf-step__seances-movie-start'>{timeStart}</p>
-            <p className='conf-step__seances-movie-start' style={{'left': `${dur-wt}px`}}>{timeEnd}</p>
-            <div className='conf-step__seances-movie-after' style={{'left': `${dur-1}px`}}></div>
-            <div className='cleaner-time' style={{'left': `${dur-1}px`}}></div>
+            <p className='conf-step__seances-movie-title' data-tag='film'>{name}</p>
+            <p className='conf-step__seances-movie-start' data-tag='film'>{timeStart}</p>
+            <p className='conf-step__seances-movie-start' data-tag='film' style={{'left': `${dur-wt}px`}}>{timeEnd}</p>
+            <div className='conf-step__seances-movie-after' data-tag='film' style={{'left': `${dur-1}px`}}></div>
+            <div className='cleaner-time' tag='film' style={{'left': `${dur-1}px`}}></div>
           </div>
         )
       })

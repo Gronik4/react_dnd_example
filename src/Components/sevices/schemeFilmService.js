@@ -6,7 +6,7 @@ export default function schemeFilmService(tension, datas) {
   } else {
     renderDate = [];
   }
-  //console.log(renderDate);
+  
   let totalTime = 10 * 60; // Время начала работы зала 10:00, с начала суток, в минутах.  
   let totalWidth = 0;
 
@@ -18,7 +18,7 @@ export default function schemeFilmService(tension, datas) {
     const minutesEnd = (totalTime + film.duration) % 60>9? (totalTime + film.duration) % 60: `0${(totalTime + film.duration) % 60}`;
     renderDate.push(
       {
-        id: film.id+'fs',
+        id: film.id,
         name: film.name,
         dur: film.duration,
         posStart: totalWidth,
@@ -29,8 +29,5 @@ export default function schemeFilmService(tension, datas) {
     totalWidth += (film.duration + 10);
     totalTime += (film.duration + 10);
   });
-
-  //const film = JSON.parse(datas).find(item=> item.id === id);
-  
   return renderDate;
 }

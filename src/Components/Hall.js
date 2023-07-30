@@ -1,75 +1,73 @@
 import React, { useState } from 'react';
 import LoadingMovies from './LoadingMovies';
 import changeTension from './sevices/changeTension';
+import testTension from './sevices/testTension';
 
 export default function Hall({ name, id, schedule, datas }) {
   const [tension, setTension] = useState(schedule[id+'hg']);
  
-  function hendlerDEnd(e) {
-    const satellite = changeTension(e, tension, 'del');
+  function hendlerDEnd() {;
+    const satellite = changeTension(0, tension, 'del');
     setTension(satellite);
   }
 
   function cleanerHall() {
     setTension([]);
-    document.getElementById(id+'hg').style =  'background: ';
+    document.getElementById(id).style =  'background: ';
   }
   
-  function hendlerDragOver(evn) {
-    evn.preventDefault();
-    if(evn.currentTarget.className === 'conf-step__seances-timeline') {
-      evn.target.style = 'background: #9adeed';
-      //console.log(evn.currentTarget.className);
-    }
-  }
-  function hendlerDragEnter(e) {
+  function hendlerDragOver(e) {
     e.preventDefault();
-    if(e.currentTarget.className ===('conf-step__seances-timeline')){
-      console.log('Достигли целевого= '+e.currentTarget.id);
-      const satellite = changeTension(e, tension, 'addend');
-      setTension(satellite);
+    
+    if(e.target.className === 'conf-step__seances-timeline') {
+      e.target.style = 'background: #8ADEE9';
     }
-    /*if(e.target.classList.contains('conf-step__seances-movie')) {
-      const satellite = changeTension(e, tension, 'add');
-      setTension(satellite);
-    }*/
+    if(e.target.dataset.tag === 'film') {
+      const upper = e.target.closest('.conf-step__seances-movie');
+      upper.style.border = '3px dashed red';
+    }
   }
   
   function hendlerDragLeave(e) {
-    //e.preventDefault();
-    const place = e.target.closest('conf-step__seances-timeline');
-  if(e.currentTarget.className === 'conf-step__seances-timeline') {
-    e.target.style = 'background: ';
-    console.log('Вылетели из целевого= '+place.id )
-    const satellite = changeTension(e, tension, 'delend');
-    setTension(satellite);
-  }
-  /*if(e.target.className === 'conf-step__seances-movie') {
-    e.target.style = 'background: ';
-    const satellite = changeTension(e, tension, 'del');
-    setTension(satellite);
-  }*/
-    //
+    e.preventDefault();
+    if(e.target.className === 'conf-step__seances-timeline') {
+      e.currentTarget.style = 'background: ';
+    }
+    if(e.target.dataset.tag === 'film') {
+      const upper = e.target.closest('.conf-step__seances-movie');
+      upper.style.border = 'none';
+    }
   }
 
   function hendlerDrop(e) {
-    e.target.style = 'background: ';
-   // console.log('бросили над элементом с классом= '+e.target.className);
-    //console.log('бросили над элементом с id= '+e.target.id);
+    const taken = document.querySelector('.taken');
+    console.log(taken);
+    //const pass = testTension(tension, datas);
+    if(e.target.className === 'conf-step__seances-timeline') {;
+      const satellite = changeTension(0, tension, 'addend');
+      setTension(satellite);
+      e.currentTarget.style.background = '';
+    }
+    if(e.target.dataset.tag === 'film') {
+      const upper = e.target.closest('.conf-step__seances-movie');
+      upper.style.border = 'none';
+      const satellite =  changeTension(upper.id, tension, 'add');
+      setTension(satellite);
+    }
+    
   }
 
   return (
-    <div className='conf-step__seances-hall' key={id} id={id+'h'}>
+    <div className='conf-step__seances-hall' key={id} id={id}>
       <h3 className='conf-step__seances-title'>{name}</h3>
       <div
         className='conf-step__seances-timeline'
-        id={id+'hg'}
+        id={id}
         onDragOver={(evn)=> hendlerDragOver(evn)}
         onDrop={(e)=> hendlerDrop(e)}
         onDragLeave={(e)=> hendlerDragLeave(e)}
-        onDragEnter={(e)=> hendlerDragEnter(e)}
       >
-        <LoadingMovies tension={tension} datas={datas} onDelFilm={(e)=> hendlerDEnd(e)}/>
+        <LoadingMovies tension={tension} datas={datas} onDelFilm={()=> hendlerDEnd()}/>
       </div>
       <button
         type='reset'
