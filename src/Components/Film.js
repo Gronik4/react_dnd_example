@@ -6,10 +6,9 @@ export default function Film({img, name, duration, id, onSelectFilm}) {
   
   function hendlerStart(e) {
     e.target.classList.add('taken');
-    console.log('Взяли фильм с id= ' + e.target.id);
     const fantom = filmScheme(name, duration, id);
     document.querySelector('.conf-step__movies').append(fantom);
-    e.dataTransfer.setDragImage(document.getElementById(`${e.target.id}ff`), 10,10);
+    e.dataTransfer.setDragImage(document.getElementById(`${e.target.id}fantom`), 10,10);
     setTimeout(()=> fantom.remove(), 0);
   }
   function hendlerEnd(e) {

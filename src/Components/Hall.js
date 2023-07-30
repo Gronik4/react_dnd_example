@@ -40,21 +40,25 @@ export default function Hall({ name, id, schedule, datas }) {
   }
 
   function hendlerDrop(e) {
-    const taken = document.querySelector('.taken');
-    console.log(taken);
-    //const pass = testTension(tension, datas);
-    if(e.target.className === 'conf-step__seances-timeline') {;
-      const satellite = changeTension(0, tension, 'addend');
-      setTension(satellite);
+    const takenId = document.querySelector('.taken').id;
+    const pass = testTension(tension, datas, takenId);
+    if(e.target.className === 'conf-step__seances-timeline') {
       e.currentTarget.style.background = '';
+      if(pass) {
+        const satellite = changeTension(0, tension, 'addend');
+        setTension(satellite);
+      } else {
+        return;
+      }
     }
     if(e.target.dataset.tag === 'film') {
       const upper = e.target.closest('.conf-step__seances-movie');
       upper.style.border = 'none';
-      const satellite =  changeTension(upper.id, tension, 'add');
-      setTension(satellite);
-    }
-    
+      if(pass) {
+        const satellite =  changeTension(upper.id, tension, 'add');
+        setTension(satellite);
+      } else {return;} 
+    } 
   }
 
   return (
