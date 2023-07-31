@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react_dnd_example/static/css/main.1613452b.css",
+    "main.js": "/react_dnd_example/static/js/main.2073a824.js",
+    "static/js/787.408164ea.chunk.js": "/react_dnd_example/static/js/787.408164ea.chunk.js",
+    "static/media/poster.png": "/react_dnd_example/static/media/poster.87d5fcbf4ff6c646ec72.png",
+    "index.html": "/react_dnd_example/index.html",
+    "main.1613452b.css.map": "/react_dnd_example/static/css/main.1613452b.css.map",
+    "main.2073a824.js.map": "/react_dnd_example/static/js/main.2073a824.js.map",
+    "787.408164ea.chunk.js.map": "/react_dnd_example/static/js/787.408164ea.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1613452b.css",
+    "static/js/main.2073a824.js"
+  ]
+}
