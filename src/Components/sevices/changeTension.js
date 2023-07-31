@@ -6,7 +6,6 @@ export default function changeTension(goalid, source, flag) {
   switch(flag) {
     case 'add':
       index = arr.indexOf(goal);
-      console.log('index= '+index);
       arr.splice(index, 0, Number(idTaken));
       break;
     case 'addend':

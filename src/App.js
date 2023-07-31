@@ -48,7 +48,8 @@ function App() {
         </div>
         <div className='conf-step__legend'>
           <span className='clearing-time__span'></span> - Время уборки и проветривания зала 10 минут
-          <p className="conf-step__paragraph">Для составления сетки зала, перетащите нужный фильм в нужный зал.</p>
+          <p className="conf-step__paragraph">Для составления сетки зала, перетащите нужный фильм в нужный зал.<br></br>
+            Продолжительность работы зала с 10:00 до 23:00.</p>
         </div>
         <div className='conf-step__seances'>
           {halls.map((el)=> {

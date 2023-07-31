@@ -1,8 +1,4 @@
-console.log(scheduleHalls);
-  console.log(arr1);
-  console.log(arr1[1][0])
-
- <SchemeFilm id={films[0].id} name={films[0].name} duration={films[0].duration}/> 
+<SchemeFilm id={films[0].id} name={films[0].name} duration={films[0].duration}/> 
  Что нужно в SchemeFilm: id, name, duration, posStart, posEnd, timeStart, timeEnd
   где:
     id- id фильма,
@@ -24,5 +20,4 @@ console.log(scheduleHalls);
 Для каждого наблюдателя нужно создать функцию и одним из переметров передать event.
 В функции наблюдателей onDrop и onDragOver необходимо сделать event.preventDefault();
 
-https://developer.mozilla.org/docs/Web/API/DataTransfer/setDragImage
 https://developer.mozilla.org/docs/Web/API/DataTransfer/setDragImage

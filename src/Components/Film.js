@@ -1,12 +1,12 @@
 import React from 'react';
-import image from '../img/poster.png'
-import filmScheme from './sevices/filmScheme';
+import image from '../img/poster.png';
+import createFantom from './sevices/createFantom';
 
 export default function Film({img, name, duration, id, onSelectFilm}) {
   
   function hendlerStart(e) {
     e.target.classList.add('taken');
-    const fantom = filmScheme(name, duration, id);
+    const fantom = createFantom(name, duration, id);
     document.querySelector('.conf-step__movies').append(fantom);
     e.dataTransfer.setDragImage(document.getElementById(`${e.target.id}fantom`), 10,10);
     setTimeout(()=> fantom.remove(), 0);

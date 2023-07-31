@@ -6,28 +6,15 @@ export default function LoadingMovies({tension, datas, onDelFilm}) {
   const wt = 29; // Ширина записи времени чч:мм
   const listFilms = schemeFilmService(tension, datas);
 
-  if(tension.length !== 0) {
-    const workingHours = listFilms.reduce((summ, next)=> summ + next.dur + 10, 0);
-    if(workingHours > 779) {
-      alert(`Нельзя добавить этот фильм в сетку этого зала!\n
-            Так как время демонстрации фильмов превысит продолжительность работы зала.`);
-      tension.splice(-1, 1);
-    }
-  }
-  
-  
   function hendlerStartSF(e) {
-    console.log('Взяли фильм= '+e.target.id);
     e.target.style.opacity = '0.4';
-    e.target.classList.add('taken');
-    
+    e.target.classList.add('taken');  
   }
 
   function hendlerEndSF(e) {
     e.target.style.opacity = '1';
     onDelFilm();
-    e.target.classList.remove('taken');
-    
+    e.target.classList.remove('taken'); 
   }
 
   return (

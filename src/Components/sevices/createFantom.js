@@ -1,4 +1,4 @@
-export default function filmScheme(name, duration, id) {
+export default function createFantom(name, duration, id) {
   const div = document.createElement('div');
   div.id = id+'fantom';
   div.className = 'fantom';
